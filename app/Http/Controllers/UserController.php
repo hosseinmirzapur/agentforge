@@ -11,7 +11,9 @@ use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
-    public function __construct(private readonly AuthService $authService) {}
+    public function __construct(private readonly AuthService $authService)
+    {
+    }
 
     /**
      * @param Request $request
@@ -30,7 +32,11 @@ class UserController extends Controller
         );
     }
 
-    public function register(RegisterUserRequest $request)
+    /**
+     * @param RegisterUserRequest $request
+     * @return JsonResponse
+     */
+    public function register(RegisterUserRequest $request): JsonResponse
     {
         $data = $request->validated();
 
